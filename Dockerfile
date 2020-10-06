@@ -9,5 +9,5 @@ ADD ./ /code/
 RUN python djangoProject/manage.py makemigrations
 
 RUN python djangoProject/manage.py migrate
-
-CMD ["python", "djangoProject/manage.py", "runserver", "80"]
+EXPOSE 8000
+CMD ["python", "djangoProject/manage.py", "runserver", "8000"]
