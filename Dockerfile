@@ -10,5 +10,5 @@ RUN python djangoProject/manage.py makemigrations
 
 RUN python djangoProject/manage.py migrate
 EXPOSE 80
-CMD ["sudo","python", "djangoProject/manage.py", "runserver", "0.0.0.0:80"]
+CMD ["python", "djangoProject/manage.py", "runserver", "0.0.0.0:80"]
 
