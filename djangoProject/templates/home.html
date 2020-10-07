@@ -1,0 +1,28 @@
+<!-- templates/home.html -->
+
+
+{% block title %}Smart Surveillance Dashboard{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+<table>
+<tr>
+<td>
+    <div>
+    {% include "index.html" %}
+
+    </div>
+</td>
+    <td>
+    <div>
+    Another div
+    </div>
+    </td>
+</tr>
+</table>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
