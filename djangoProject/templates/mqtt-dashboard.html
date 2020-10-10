@@ -4,7 +4,8 @@
         <title>Events Dashboard</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
- $(document).ready(function() {
+
+function fetchdata(){
     $.ajax({
         url: "https://nnw62vov2m.execute-api.us-west-2.amazonaws.com/stage?TableName=surveillance_bot_sensor_messages"
     }).then(function(data) {
@@ -12,11 +13,16 @@
        $.each(data.Items, function(key, value) {
 	       console.log(key)
 	       console.log(value)
-	   var message = value.PositionInRow  + " : " + value.Row + "</br>"
+	   var message = value.payload.timestamp  + " : " + value.payload.message + "</br>"
 	   $('.message-box').append(message );
     });
     })
+}
+
+$(document).ready(function(){
+ setInterval(fetchdata,5000);
 });
+
 </script>
     </head>
 
