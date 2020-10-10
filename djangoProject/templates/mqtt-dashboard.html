@@ -8,7 +8,10 @@ $(document).ready(function() {
     $.ajax({
         url: "https://nnw62vov2m.execute-api.us-west-2.amazonaws.com/stage?TableName=surveillance_bot_sensor_messages"
     }).then(function(data) {
+	    console.log(data)
        $.each(data.Items, function(key, value) {
+	       console.log(key)
+	       console.log(value)
 	   var message = value.PositionInRow  + " : " + value.Row + "</br>"
 	   $('.message-box').append(message );
     });
