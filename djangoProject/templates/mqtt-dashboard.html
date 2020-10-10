@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events Dashboard</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+$(document).ready(function() {
+    $.ajax({
+        url: "https://nnw62vov2m.execute-api.us-west-2.amazonaws.com/stage?TableName=surveillance_bot_sensor_messages"
+    }).then(function(data) {
+       $('.greeting-id').append(data.timestamp);
+       $('.greeting-content').append(data.message);
+    });
+});
+</script>
+    </head>
+
+    <body>
+        <div>
+            <p class="greeting-id"></p>
+            <p class="greeting-content"></p>
+        </div>
+    </body>
+</html>
