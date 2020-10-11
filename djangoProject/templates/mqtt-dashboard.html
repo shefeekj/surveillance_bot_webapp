@@ -14,7 +14,9 @@ function fetchdata(){
        $.each(data.Items, function(key, value) {
 	       console.log(key)
 	       console.log(value)
-	   var message = value.payload.timestamp  + " : " + value.payload.message + "</br>"
+	   var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+           d.setUTCSeconds(value.payload.timestamp);
+	   var message = d.getDate()  + " : " + value.payload.message + "</br>"
 	   $('.message-box').append(message );
     });
     })
