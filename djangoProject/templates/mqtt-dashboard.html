@@ -16,7 +16,7 @@ function fetchdata(){
 	       console.log(value)
 	       var myDate = new Date(value["PositionInRow"]*1000);
 	       var time_str = myDate.toLocaleString()
-	   var message = time_str  + " : " + value.Row + "</br>"
+	   var message = value.payload.timestamp  + " : " + value.Row + "</br>"
 	   $('.message-box').append(message );
     });
     })
