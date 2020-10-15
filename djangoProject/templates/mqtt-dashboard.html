@@ -14,7 +14,7 @@ function fetchdata(){
        $.each(data.Items, function(key, value) {
 	       console.log(key)
 	       console.log(value)
-	       var myDate = new Date(value.PositionInRow*1000);
+	       var myDate = new Date(value["PositionInRow"]*1000);
 	       var time_str = myDate.toLocaleString()
 	   var message = time_str  + " : " + value.Row + "</br>"
 	   $('.message-box').append(message );
