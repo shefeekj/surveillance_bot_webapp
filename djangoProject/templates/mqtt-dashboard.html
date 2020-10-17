@@ -6,7 +6,7 @@
         <script>
 
 function fetchdata(){
-    $('.message-box').empty();
+    $('.sensor-message-box').empty();
     $.ajax({
         url: "https://nnw62vov2m.execute-api.us-west-2.amazonaws.com/stage?TableName=surveillance_bot_sensor_messages"
     }).then(function(data) {
@@ -17,7 +17,19 @@ function fetchdata(){
 	       var myDate = new Date(value.payload.timestamp*1000);
 	       var time_str = myDate.toLocaleString()
 	   var message = time_str  + " : " + value.Row + "</br>"
-	   $('.message-box').append(message );
+	   $('.sensor-message-box').append(message );
+    });
+    })
+	
+	 $('.rekognition-message-box').empty();
+    $.ajax({
+        url: "https://nnw62vov2m.execute-api.us-west-2.amazonaws.com/stage?TableName=aws_rekognition_table"
+    }).then(function(data) {
+	    console.log(data)
+       $.each(data.Items, function(key, value) {
+	       console.log(key)
+	       console.log(value)
+	   $('.rekognition-message-box').append(value);
     });
     })
 }
@@ -31,7 +43,12 @@ $(document).ready(function(){
 
     <body>
         <div>
-            <p class="message-box"></p>
+		<h2>Robot Notifications</h2>
+            <p class="sensor-message-box"></p>
+        </div>
+	 <div>
+		 <h2>Intruder Detections</h2>
+            <p class="rekognition-message-box"></p>
         </div>
     </body>
 </html>
