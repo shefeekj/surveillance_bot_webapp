@@ -29,7 +29,8 @@ function fetchdata(){
        $.each(data.Items, function(key, value) {
 	       console.log(key)
 	       console.log(value)
-	   $('.rekognition-message-box').append(value.message);
+	       var intruder_message = value.timestamp + ' : ' +value.message +"</br>
+	   $('.rekognition-message-box').append(value.intruder_message);
     });
     })
 }
